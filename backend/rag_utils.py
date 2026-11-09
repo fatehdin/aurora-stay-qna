@@ -44,7 +44,7 @@ def generate(query, retrieved_chunks,model) -> str:
 # Define the full RAG pipeline combining retrieval and generation
 def rag(
     query: str,
-    k: int = 2,
+    k: int = 3,
     model_name: str = "gpt-4o-mini",
     temperature: float = 0.0,
     top_p: float = 1.0,

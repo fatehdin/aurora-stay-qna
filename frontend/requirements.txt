@@ -1,3 +1,4 @@
 
+# HTTP client used to call the Flask backend, and the web UI framework
 requests==2.34.2
 streamlit==1.64.0

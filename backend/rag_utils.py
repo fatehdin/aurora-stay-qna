@@ -15,6 +15,7 @@ def retrieve(query: str, k: int = 2,vectorstore=None) -> list[str]:
 # Define the generation function that prompts the LLM with retrieved context
 def generate(query, retrieved_chunks,model) -> str:
 
+    # Prompt = role + user question + retrieved chunks + rules (same rules as in the notebook version)
     prompt = f"""
     You are an AI assistant helping AuroraStay Hotels staff answer questions about hotel policies.
 
@@ -37,6 +38,7 @@ def generate(query, retrieved_chunks,model) -> str:
     Answer:
     """
 
+    # Send the prompt to the LLM and return its reply
     return model.invoke(prompt)
 
 # Define the full RAG pipeline combining retrieval and generation
@@ -55,6 +57,7 @@ def rag(
         temperature=temperature,
         top_p=top_p,
         max_tokens=max_tokens,
+        # Credentials come from the Codespace secrets (environment variables), never from the code
         openai_api_key=os.getenv('OPENAI_API_KEY'),
         openai_api_base=os.getenv('OPENAI_API_BASE')
     )
